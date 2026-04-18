@@ -1,0 +1,11 @@
+*
+
+!build/
+!build/**
+!src/
+!src/**
+!.gitignore
+!LICENSE
+!Makefile
+!NOTICE
+!README.md

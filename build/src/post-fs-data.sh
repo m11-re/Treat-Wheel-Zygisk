@@ -1,0 +1,1 @@
+rm -rf /data/adb/treat_wheel/status

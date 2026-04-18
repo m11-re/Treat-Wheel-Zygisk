@@ -1,9 +1,6 @@
-# Treat Wheel
+# ReZygisk's Treat Wheel
 
 World's most advanced and simplest general purpose root module.
-
-> [!NOTE]
-> Treat Wheel will soon be have its source released. Soon.. enough.
 
 ## Features
 
@@ -13,7 +10,7 @@ World's most advanced and simplest general purpose root module.
 
 ## Requirements
 
-- Magisk Official, KernelSU Official or API compliant, or APatch
+- Magisk Official, KernelSU Official (or API compliant), or APatch
 - ReZygisk 498 or higher
 - Android 7.1 or higher
 
@@ -26,6 +23,17 @@ Any question or issue related to Treat Wheel can be made in our:
 
 > [!WARNING]
 > Absolutely NO support will be given if requirements are NOT met.
+
+## Usage
+
+The only feature of Treat Wheel that requires setup is RVU (ReVanced Umount). ReVanced modules MUST include a `tw_config` file in their module folder with the following content:
+
+```properties
+module_type=revanced
+allow_umount=true
+```
+
+Which will allow Treat Wheel to enumerate the amount of ReVanced modules -- hence amount of mounts it should find -- and umount them.
 
 ## Contribution
 

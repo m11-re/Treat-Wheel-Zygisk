@@ -1,0 +1,96 @@
+/* INFO: Code shared with settings page */
+
+.slider {
+  position: absolute;
+  inset: 0; 
+  cursor: pointer;
+  background-color: var(--button);
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 23px;
+  width: 23px;
+  left: 6px;
+  bottom: 6px;
+  background-color: var(--desc);
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+input:checked + .slider {
+  background-color: var(--button-enabled);
+  transition: 0.6s;
+}
+
+.action_card {
+  display: inline-block;
+  width: 80%;
+  transition: opacity 0.5s;
+}
+
+.action_card_title {
+  font-size: 1.1em;
+  padding-left: 5px;
+  padding-top: 6px;
+  padding-bottom: 2px;
+}
+
+.action_card_title_with_flag {
+  font-size: 1.1em;
+  padding-left: 5px;
+  padding-top: 6px;
+  padding-bottom: 4px;
+  line-height: 1.3;
+  align-items: center;
+}
+
+.action_card_description {
+  font-size: 0.9em;
+  padding-left: 5px;
+  padding-bottom: 6px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin-left: 10px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle_title {
+  margin-left: 3px;
+}
+
+.normal_title {
+  font-size: 16px;
+}
+
+.flag_content {
+  padding: 4px 8px 4px 8px;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: 550;
+}
+
+.experiment_flag {
+  background-color: #ca2823;
+}
+
+.futile_flag {
+  background-color: #454545;
+}

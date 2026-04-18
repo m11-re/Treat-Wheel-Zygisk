@@ -1,0 +1,1 @@
+allow * zygote unix_stream_socket { write read }

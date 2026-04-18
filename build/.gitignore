@@ -1,0 +1,12 @@
+*
+
+!src/
+!src/META-INF
+!src/META-INF/**
+!src/customize.sh
+!src/post-fs-data.sh
+!src/sepolicy.rule
+!src/service.sh
+!src/uninstall.sh
+!.gitignore
+!/module.prop
