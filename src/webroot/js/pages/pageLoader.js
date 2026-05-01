@@ -214,9 +214,9 @@ async function initializePage(pageId, pageSpecificContent, shouldApplyHTMLChange
   module.load()
 }
 
-function unuseHTML(page, pageId) {
+function unuseHTML(page, pageId, shouldRemoveListeners = true) {
   /* INFO: Remove all event listeners from window */
-  utils.removeAllListeners()
+  if (shouldRemoveListeners) utils.removeAllListeners()
   const pagePrefix = `page_${pageId}:`
 
   if (page.childNodes) page.childNodes.forEach((child) => {
@@ -241,7 +241,7 @@ function unuseHTML(page, pageId) {
       }
     }
 
-    unuseHTML(child, pageId)
+    unuseHTML(child, pageId, false)
   })
 }
 
@@ -432,13 +432,14 @@ export async function loadPage(pageId) {
 
     const transitionDirection = allMainPages.indexOf(pageId) > allMainPages.indexOf(currentPage) ? 1 : -1
 
-    await runMainPageTransition(currentPageContent, pageSpecificContent, transitionDirection, async () => {
-      unuseHTML(currentPageContent, currentPage)
-      document.getElementById(`${currentPage}_css`).media = 'not all'
-      document.getElementById(`${pageId}_css`).media = 'all'
+    document.getElementById(`${pageId}_css`).media = 'all'
+    utils.removeAllListeners()
+    await initializePage(pageId, pageSpecificContent, targetNeedsRevert)
 
-      await initializePage(pageId, pageSpecificContent, targetNeedsRevert)
-    })
+    await runMainPageTransition(currentPageContent, pageSpecificContent, transitionDirection)
+
+    unuseHTML(currentPageContent, currentPage, false)
+    document.getElementById(`${currentPage}_css`).media = 'not all'
 
     return true
   } catch (error) {
