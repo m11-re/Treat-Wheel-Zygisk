@@ -1,0 +1,33 @@
+name: Treat Wheel Zygisk CI
+
+on:
+  push:
+    branches: [ main ]
+
+  pull_request:
+  merge_group:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install make and zip
+        run: sudo apt update && sudo apt install zip
+
+      - name: Setup NDK_PATH
+        run: echo "NDK_PATH=$ANDROID_NDK_LATEST_HOME" >> $GITHUB_ENV
+
+      - name: Build with make
+        env:
+          IS_GITHUB_ACTION: true
+        run: cd module && make
+
+      - name: Upload
+        uses: actions/upload-artifact@v7
+        with:
+          path: build/TreatWheel.zip
+          archive: false
